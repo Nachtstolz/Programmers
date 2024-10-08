@@ -19,6 +19,7 @@ def solution(phone_book):
     '''
     
     ''' 정렬 -> 반복문 '''
+    '''
     phone_book.sort()
     
     # 단방향 비교만 해도 괜찮다
@@ -27,5 +28,19 @@ def solution(phone_book):
         if phone_book[i] == phone_book[i+1][:length] :
             answer = False
             return answer
+    '''
+        
+    ''' 해시 '''
+    d = {}
+    for phone in phone_book :
+        d[phone] = 1 # 딕셔너리에 저장
+    
+    for phone in phone_book :
+        front = ""
+        for number in phone :
+            front += number
+            if front in d and front != phone :
+                answer = False
+                return answer
 
     return answer
